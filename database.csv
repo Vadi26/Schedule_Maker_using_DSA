@@ -1,5 +1,20 @@
-Class,projector,"Vacancy (1- occupied, 0- vacant)",capacity
-AC-101,1,,80
-AC-102,0,,80
-AC-103,0,,80
-AC-104,1,,80
+day,branch&year,division,classrooms,subjects,timing
+monday,2nd year Computer,1,AC-203,BFE,910
+,2nd year Computer,1,AC-203,DSA-2,1011
+,2nd year Computer,1,AC-203,VCPDE,1112
+,2nd year Computer,1,AC-203,MT,1201
+,2nd year Computer,1,AC-202,SA,405
+tuesday,2nd year Computer,1,AC-202,BFE,910
+,2nd year Computer,1,AC-203,DC,1011
+,2nd year Computer,1,AC-203,VCPDE,1112
+,2nd year Computer,1,AC-203,MT,1201
+wednesday,2nd year Computer,1,AC-203,DSA-2,1011
+,2nd year Computer,1,AC-203,VCPDE,1112
+,2nd year Computer,1,AC-203,TOC,1201
+thursday,2nd year Computer,1,AC-203,BFE,910
+,2nd year Computer,1,AC-203,DC,1011
+,2nd year Computer,1,AC-203,TOC,1112
+,2nd year Computer,1,AC-203,MT,1201
+friday,2nd year Computer,1,AC-203,DC,1011
+,2nd year Computer,1,AC-203,TOC,1112
+,2nd year Computer,1,AC-203,RPPOOP,1201
