@@ -1,0 +1,5 @@
+Class,projector,"Vacancy (1- occupied, 0- vacant)",capacity
+AC-101,1,,80
+AC-102,0,,80
+AC-103,0,,80
+AC-104,1,,80
