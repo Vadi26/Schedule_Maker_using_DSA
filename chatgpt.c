@@ -218,74 +218,74 @@ int main() {
     }
 
     // Create the classrooms table
-    char *sql = "CREATE TABLE classrooms ("
-                "id INTEGER PRIMARY KEY,"
-                "name TEXT,"
-                "capacity INTEGER"
-                ");";
-    rc = sqlite3_exec(db, sql, 0, 0, &err_msg);
-    if (rc != SQLITE_OK) {
-        fprintf(stderr, "SQL error: %s\n", err_msg);
-        sqlite3_free(err_msg);
-        sqlite3_close(db);
-        return 1;
-    }
+    // char *sql = "CREATE TABLE classrooms ("
+    //             "id INTEGER PRIMARY KEY,"
+    //             "name TEXT,"
+    //             "capacity INTEGER"
+    //             ");";
+    // rc = sqlite3_exec(db, sql, 0, 0, &err_msg);
+    // if (rc != SQLITE_OK) {
+    //     fprintf(stderr, "SQL error: %s\n", err_msg);
+    //     sqlite3_free(err_msg);
+    //     sqlite3_close(db);
+    //     return 1;
+    // }
 
-    // Insert some classrooms
-    sql = "INSERT INTO classrooms (name, capacity) VALUES "
-          "('Room A-101', 30),"
-          "('Room A-102', 25),"
-          "('Room A-103', 35),"
-          "('Room A-104', 20),"
-          "('Room A-201', 40),"
-          "('Room A-202', 30),"
-          "('Room A-203', 25),"
-          "('Room A-204', 20),"
-          "('Room A-301', 45),"
-          "('Room A-302', 35),"
-          "('Room A-303', 30),"
-          "('Room A-304', 25);";
-    rc = sqlite3_exec(db, sql, 0, 0, &err_msg);
-    if (rc != SQLITE_OK) {
-        fprintf(stderr, "SQL error: %s\n", err_msg);
-        sqlite3_free(err_msg);
-        sqlite3_close(db);
-        return 1;
-    }
+    // // Insert some classrooms
+    // sql = "INSERT INTO classrooms (name, capacity) VALUES "
+    //       "('Room A-101', 30),"
+    //       "('Room A-102', 25),"
+    //       "('Room A-103', 35),"
+    //       "('Room A-104', 20),"
+    //       "('Room A-201', 40),"
+    //       "('Room A-202', 30),"
+    //       "('Room A-203', 25),"
+    //       "('Room A-204', 20),"
+    //       "('Room A-301', 45),"
+    //       "('Room A-302', 35),"
+    //       "('Room A-303', 30),"
+    //       "('Room A-304', 25);";
+    // rc = sqlite3_exec(db, sql, 0, 0, &err_msg);
+    // if (rc != SQLITE_OK) {
+    //     fprintf(stderr, "SQL error: %s\n", err_msg);
+    //     sqlite3_free(err_msg);
+    //     sqlite3_close(db);
+    //     return 1;
+    // }
 
-    // Create the class_schedule table
-    sql = "CREATE TABLE class_schedule ("
-          "id INTEGER PRIMARY KEY,"
-          "teacher_name TEXT,"
-          "classroom_id INTEGER,"
-          "day INTEGER,"
-          "start_time INTEGER,"
-          "duration INTEGER,"
-          "FOREIGN KEY (classroom_id) REFERENCES classrooms(id)"
-          ");";
-    rc = sqlite3_exec(db, sql, 0, 0, &err_msg);
-    if (rc != SQLITE_OK) {
-        fprintf(stderr, "SQL error: %s\n", err_msg);
-        sqlite3_free(err_msg);
-        sqlite3_close(db);
-        return 1;
-    }
+    // // Create the class_schedule table
+    // sql = "CREATE TABLE class_schedule ("
+    //       "id INTEGER PRIMARY KEY,"
+    //       "teacher_name TEXT,"
+    //       "classroom_id INTEGER,"
+    //       "day INTEGER,"
+    //       "start_time INTEGER,"
+    //       "duration INTEGER,"
+    //       "FOREIGN KEY (classroom_id) REFERENCES classrooms(id)"
+    //       ");";
+    // rc = sqlite3_exec(db, sql, 0, 0, &err_msg);
+    // if (rc != SQLITE_OK) {
+    //     fprintf(stderr, "SQL error: %s\n", err_msg);
+    //     sqlite3_free(err_msg);
+    //     sqlite3_close(db);
+    //     return 1;
+    // }
 
-    // Insert some class schedules
-    sql = "INSERT INTO class_schedule (teacher_name, classroom_id, day, start_time, duration) VALUES "
-          "('John Doe', 1, 1, 9, 2),"
-          "('Jane Smith', 2, 1, 9, 2),"
-          "('Bob Johnson', 3, 1, 11, 1),"
-          "('Alice Lee', 4, 1, 11, 1),"
-          "('John Doe', 5, 1, 12, 1)";
+    // // Insert some class schedules
+    // sql = "INSERT INTO class_schedule (teacher_name, classroom_id, day, start_time, duration) VALUES "
+    //       "('John Doe', 1, 1, 9, 2),"
+    //       "('Jane Smith', 2, 1, 9, 2),"
+    //       "('Bob Johnson', 3, 1, 11, 1),"
+    //       "('Alice Lee', 4, 1, 11, 1),"
+    //       "('John Doe', 5, 1, 12, 1)";
     
-    rc = sqlite3_exec(db, sql, 0, 0, &err_msg);
-    if (rc != SQLITE_OK) {
-        fprintf(stderr, "SQL error: %s\n", err_msg);
-        sqlite3_free(err_msg);
-        sqlite3_close(db);
-        return 1;
-    }
+    // rc = sqlite3_exec(db, sql, 0, 0, &err_msg);
+    // if (rc != SQLITE_OK) {
+    //     fprintf(stderr, "SQL error: %s\n", err_msg);
+    //     sqlite3_free(err_msg);
+    //     sqlite3_close(db);
+    //     return 1;
+    // }
 
     // Call the main menu function
     main_menu(db);
