@@ -4,35 +4,35 @@ AC-103,Monday,10:00-11:00,Vinod Pachghare,FOC,FY_MT
 ,Monday,11:00-12:00,,LUNCH,FY_MT
 AC-104,Monday,12:00-13:00,Deepak Kshirsagar,CSS,FY_MT
 AC-201,Monday,13:00-14:00,Deepak Kshirsagar,DML,FY_MT
-AC-202,Monday,14:00-15:00,Deepak Kshirsagar,ITC Lab,FY_MT
-AC-203,Monday,15:00-16:00,Deepak Kshirsagar,ITC Lab,FY_MT
-AC-204,Monday,16:00-17:00,Aman Jhinga,SH PSQT,FY_MT
+AC-202,Monday,14:00-15:00,Deepak Kshirsagar,ITC,FY_MT
+AC-203,Monday,15:00-16:00,Deepak Kshirsagar,ITC,FY_MT
+AC-204,Monday,16:00-17:00,Aman Jhinga,PSQT,FY_MT
 AC-101,Monday,17:00-18:00,Rahul B. Adhav,DML,FY_MT
 AC-102,Tuesday,08:00-09:00,Siddharth Gaikwad,DML,FY_MT
 AC-103,Tuesday,09:00-10:00,Soma Ghosh,PSQT,FY_MT
 ,Tuesday,10:00-11:00,,LUNCH,FY_MT
 AC-104,Tuesday,11:00-12:00,Rahul B. Adhav,DML,FY_MT
-AC-201,Tuesday,12:00-13:00,Deepak Kshirsagar,ITC Lab,FY_MT
-AC-202,Tuesday,13:00-14:00,Deepak Kshirsagar,ITC Lab,FY_MT
-AC-203,Tuesday,14:00-15:00,Soma Ghosh,SH PSQT,FY_MT
+AC-201,Tuesday,12:00-13:00,Deepak Kshirsagar,ITC,FY_MT
+AC-202,Tuesday,13:00-14:00,Deepak Kshirsagar,ITC,FY_MT
+AC-203,Tuesday,14:00-15:00,Soma Ghosh,PSQT,FY_MT
 AC-204,Tuesday,15:00-16:00,Rahul B. Adhav,DML,FY_MT
 AC-101,Tuesday,16:00-17:00,Rahul B. Adhav,DML,FY_MT
-AC-102,Tuesday,17:00-18:00,Vinod Pachghare,SH FOC,FY_MT
+AC-102,Tuesday,17:00-18:00,Vinod Pachghare,FOC,FY_MT
 AC-103,Wednesday,08:00-09:00,DML,DML,FY_MT
-AC-104,Wednesday,09:00-10:00,Rahul B. Adhav,SH RM,FY_MT
-AC-201,Wednesday,10:00-11:00,Apte Sir,DML AOS,FY_MT
-AC-202,Wednesday,11:00-12:00,Apte Sir,DML MT IS DE AN,FY_MT
+AC-104,Wednesday,09:00-10:00,Rahul B. Adhav,RM,FY_MT
+AC-201,Wednesday,10:00-11:00,Apte Sir,AOS,FY_MT
+AC-202,Wednesday,11:00-12:00,Apte Sir,MT,FY_MT
 ,Wednesday,12:00-13:00,,LUNCH,FY_MT
 AC-203,Wednesday,13:00-14:00,Rahul B. Adhav,ITC,FY_MT
-AC-204,Wednesday,14:00-15:00,Siddharth Gaikwad,DML AOS Lab (MT IS 1),FY_MT
-AC-101,Wednesday,15:00-16:00,Soma Ghosh,DML AOS Lab (MT IS 1),FY_MT
-AC-102,Wednesday,16:00-17:00,Aman Jhinga,SH PSQT tut (PSQT IS),FY_MT
-AC-103,Wednesday,17:00-18:00,Rahul B. Adhav,DML MT IS DE AN,FY_MT
+AC-204,Wednesday,14:00-15:00,Siddharth Gaikwad,AOS,FY_MT
+AC-101,Wednesday,15:00-16:00,Soma Ghosh,AOS,FY_MT
+AC-102,Wednesday,16:00-17:00,Aman Jhinga,PSQT,FY_MT
+AC-103,Wednesday,17:00-18:00,Rahul B. Adhav,MT,FY_MT
 AC-104,Thursday,08:00-09:00,Siddharth Gaikwad,DML,FY_MT
-AC-201,Thursday,14:00-15:00,Aman Jhinga,SH PSQT (PSQT IS),FY_MT
-AC-202,Thursday,15:00-16:00,Rahul B. Adhav,DML CSS,FY_MT
-AC-203,Thursday,16:00-17:00,Siddharth Gaikwad,DML FOC,FY_MT
+AC-201,Thursday,14:00-15:00,Aman Jhinga,PSQT,FY_MT
+AC-202,Thursday,15:00-16:00,Rahul B. Adhav,CSS,FY_MT
+AC-203,Thursday,16:00-17:00,Siddharth Gaikwad,FOC,FY_MT
 AC-204,Thursday,17:00-18:00,Soma Ghosh,LUNCH,FY_MT
 AC-101,Friday,08:00-09:00,Rahul B. Adhav,DML,FY_MT
-AC-102,Friday,09:00-10:00,Apte Sir,SH RM,FY_MT
-AC-103,Friday,10:00-11:00,Vinod Pachghare,DML AOS,FY_MT
+AC-102,Friday,09:00-10:00,Apte Sir,RM,FY_MT
+AC-103,Friday,10:00-11:00,Vinod Pachghare,AOS,FY_MT

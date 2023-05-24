@@ -4,7 +4,8 @@
 
 int main() {
     char *name = "VADiraj";
-    if (name == "VADiraj") printf("yess");
+    if (!strcmp(name, "VADiraj")) printf("BOOOYAAA");
+    // if (name == "VADiraj") printf("%s ", name);
 
     return 0;
 }
