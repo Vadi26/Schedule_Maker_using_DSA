@@ -1,0 +1,2 @@
+user is a integer variable that will store 1 if the user is teacher
+it will store 0 if the user is student

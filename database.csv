@@ -1,45 +1,38 @@
-Class,Day,Subject,Time Slot,Classroom,Teacher Name
 FY_MT,Monday,PSQT,08:00-09:00,SH,Aman Jhinga
 FY_MT,Monday,DML,09:00-10:00,SH,Aman Jhinga
 FY_MT,Monday,FOC,10:00-11:00,SH,Vinod Pachghare
-FY_MT,Monday,LUNCH,11:00-12:00,SH,
+FY_MT,Monday,LUNCH,11:00-12:00,,
 FY_MT,Monday,CSS,12:00-13:00,ITC,Deepak Kshirsagar
-FY_MT,Monday,DML,13:00-14:00,ITC,
+FY_MT,Monday,DML,13:00-14:00,ITC,Deepak Kshirsagar
 FY_MT,Monday,ITC Lab,14:00-15:00,MT IS 1,Deepak Kshirsagar
 FY_MT,Monday,ITC Lab,15:00-16:00,MT IS 1,Deepak Kshirsagar
 FY_MT,Monday,SH PSQT,16:00-17:00,SH,Aman Jhinga
 FY_MT,Monday,DML,17:00-18:00,CSS Lab (MT IS 1),Rahul B. Adhav
 FY_MT,Tuesday,DML,08:00-09:00,ENTC EXTN,Siddharth Gaikwad
 FY_MT,Tuesday,PSQT,09:00-10:00,SH,Soma Ghosh
-FY_MT,Tuesday,LUNCH,10:00-11:00,SH,
+FY_MT,Tuesday,LUNCH,10:00-11:00,,
 FY_MT,Tuesday,DML,11:00-12:00,CSS,Rahul B. Adhav
-FY_MT,Tuesday,ITC Lab,12:00-13:00,MT IS 1,DML
-FY_MT,Tuesday,ITC Lab,13:00-14:00,MT IS 1,DML
+FY_MT,Tuesday,ITC Lab,12:00-13:00,MT IS 1,Deepak Kshirsagar
+FY_MT,Tuesday,ITC Lab,13:00-14:00,MT IS 1,Deepak Kshirsagar
 FY_MT,Tuesday,SH PSQT,14:00-15:00,SH,Soma Ghosh
 FY_MT,Tuesday,DML,15:00-16:00,CSS Lab (MT IS 1),Rahul B. Adhav
-FY_MT,Tuesday,DML,16:00-17:00,MT IS DE AN,DML
+FY_MT,Tuesday,DML,16:00-17:00,MT IS DE AN,Rahul B. Adhav
 FY_MT,Tuesday,SH FOC,17:00-18:00,SH,Vinod Pachghare
 FY_MT,Wednesday,DML,08:00-09:00,ETC,DML
-FY_MT,Wednesday,SH RM,09:00-10:00,SH,
+FY_MT,Wednesday,SH RM,09:00-10:00,SH,Rahul B. Adhav
 FY_MT,Wednesday,DML AOS,10:00-11:00,RM,Apte Sir
-FY_MT,Wednesday,DML MT IS DE AN,11:00-12:00,SH,
+FY_MT,Wednesday,DML MT IS DE AN,11:00-12:00,SH,Apte Sir
 FY_MT,Wednesday,LUNCH,12:00-13:00,,
-FY_MT,Wednesday,ITC,13:00-14:00,SH,Rahul B.
-FY_MT,Wednesday,DML AOS Lab (MT IS 1),14:00-15:00,DML,
-FY_MT,Wednesday,DML AOS Lab (MT IS 1),15:00-16:00,DML,
+FY_MT,Wednesday,ITC,13:00-14:00,SH,Rahul B. Adhav
+FY_MT,Wednesday,DML AOS Lab (MT IS 1),14:00-15:00,DML,Siddharth Gaikwad
+FY_MT,Wednesday,DML AOS Lab (MT IS 1),15:00-16:00,DML,Soma Ghosh
 FY_MT,Wednesday,SH PSQT tut (PSQT IS),16:00-17:00,SH,Aman Jhinga
-FY_MT,Wednesday,DML MT IS DE AN,17:00-18:00,SH,
+FY_MT,Wednesday,DML MT IS DE AN,17:00-18:00,SH,Rahul B. Adhav
 FY_MT,Thursday,DML,08:00-09:00,AOS,Siddharth Gaikwad
-FY_MT,Thursday,ETC,09:00-10:00,ECT Faculty,
-FY_MT,Thursday,SH RM,10:00-11:00,RM,
-FY_MT,Thursday,DML CSS,11:00-12:00,DML,
-FY_MT,Thursday,DML ITC Lab (MT IS 1),12:00-13:00,DML,
-FY_MT,Thursday,DML ITC Lab (MT IS 1),13:00-14:00,DML,
 FY_MT,Thursday,SH PSQT (PSQT IS),14:00-15:00,SH,Aman Jhinga
 FY_MT,Thursday,DML CSS,15:00-16:00,CSS Lab (MT IS 1),Rahul B. Adhav
-FY_MT,Thursday,DML FOC,16:00-17:00,SH,
-FY_MT,Thursday,LUNCH,17:00-18:00,SH,
-FY_MT,Friday,DML,08:00-09:00,ETC,
-FY_MT,Friday,SH RM,09:00-10:00,SH,
-FY_MT,Friday,DML AOS,10:00-11:00,RM,
-FY_MT,Friday,DML ETC,11:,,
+FY_MT,Thursday,DML FOC,16:00-17:00,SH,Siddharth Gaikwad
+FY_MT,Thursday,LUNCH,17:00-18:00,SH,Soma Ghosh
+FY_MT,Friday,DML,08:00-09:00,ETC,Rahul B. Adhav
+FY_MT,Friday,SH RM,09:00-10:00,SH,Apte Sir
+FY_MT,Friday,DML AOS,10:00-11:00,RM,Vinod Pachghare
