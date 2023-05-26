@@ -1,7 +1,7 @@
 AC-101,Monday,08:00-09:00,AmanJhinga,PSQT,FY_MT
 AC-102,Monday,09:00-10:00,AmanJhinga,DML,FY_MT
 AC-103,Monday,10:00-11:00,VinodPachghare,FOC,FY_MT
-LUNCH,,,,,
+LUNCH,NULL,NULL,NULL,NULL,NULL
 AC-104,Monday,12:00-13:00,DeepakKshirsagar,CSS,FY_MT
 AC-201,Monday,13:00-14:00,DeepakKshirsagar,DML,FY_MT
 AC-202,Monday,14:00-15:00,DeepakKshirsagar,ITC,FY_MT
@@ -10,7 +10,7 @@ AC-204,Monday,16:00-17:00,AmanJhinga,PSQT,FY_MT
 AC-101,Monday,17:00-18:00,RahulB.Adhav,DML,FY_MT
 AC-102,Tuesday,08:00-09:00,SiddharthGaikwad,DML,FY_MT
 AC-103,Tuesday,09:00-10:00,SomaGhosh,PSQT,FY_MT
-LUNCH,,,,,
+LUNCH,NULL,NULL,NULL,NULL,NULL
 AC-104,Tuesday,11:00-12:00,RahulB.Adhav,DML,FY_MT
 AC-201,Tuesday,12:00-13:00,DeepakKshirsagar,ITC,FY_MT
 AC-202,Tuesday,13:00-14:00,DeepakKshirsagar,ITC,FY_MT
@@ -22,7 +22,7 @@ AC-103,Wednesday,08:00-09:00,DeepakKshirsagar,DML,FY_MT
 AC-104,Wednesday,09:00-10:00,RahulB.Adhav,RM,FY_MT
 AC-201,Wednesday,10:00-11:00,ApteSir,AOS,FY_MT
 AC-202,Wednesday,11:00-12:00,ApteSir,MT,FY_MT
-LUNCH,,,,,
+LUNCH,NULL,NULL,NULL,NULL,NULL
 AC-203,Wednesday,13:00-14:00,RahulB.Adhav,ITC,FY_MT
 AC-204,Wednesday,14:00-15:00,SiddharthGaikwad,AOS,FY_MT
 AC-101,Wednesday,15:00-16:00,SomaGhosh,AOS,FY_MT
@@ -32,7 +32,7 @@ AC-104,Thursday,08:00-09:00,SiddharthGaikwad,DML,FY_MT
 AC-201,Thursday,14:00-15:00,AmanJhinga,PSQT,FY_MT
 AC-202,Thursday,15:00-16:00,RahulB.Adhav,CSS,FY_MT
 AC-203,Thursday,16:00-17:00,SiddharthGaikwad,FOC,FY_MT
-LUNCH,,,,,
+LUNCH,NULL,NULL,NULL,NULL,NULL
 AC-101,Friday,08:00-09:00,RahulB.Adhav,DML,FY_MT
 AC-102,Friday,09:00-10:00,ApteSir,RM,FY_MT
 AC-103,Friday,10:00-11:00,VinodPachghare,AOS,FY_MT

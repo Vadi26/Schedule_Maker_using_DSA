@@ -3,10 +3,17 @@
 #include<string.h>
 #include"header.h"
 
-void display_schedule() {
-    for (int i = 0; i < 8; i++) {
+void display_Monday_schedule() {
+    time_slot_node *temp = NULL;
+    for (int i = 0; i < 7; i++) {
+        temp = classrooms[i]->MON->TIME;
         printf("%s %s %s %s %s %s \n", classrooms[i]->classroom_name, classrooms[i]->MON->weekday, classrooms[i]->MON->TIME->timing, classrooms[i]->MON->TIME->faculty, classrooms[i]->MON->TIME->subject, classrooms[i]->MON->TIME->division);
+        while (temp != NULL) {
+            printf("\t %s %s %s %s \n", temp->timing, temp->faculty, temp->subject, temp->division);
+            temp = temp->next;
+        }
     }
+
 }
 
 int main() {
@@ -38,8 +45,8 @@ int main() {
         token = strtok(line, ",");
         while(token != NULL) {
             if (column == 0) {
-                if (token == "LUNCH") break;
-                else class = token;
+                // if (token == "LUNCH") break;
+                class = token;
             }
 
             // Column 2
@@ -83,7 +90,7 @@ int main() {
             if (!strcmp(day, "Monday"))
             {   
                 // this is written to check if the linked list is empty or not and then operation is done accordingly
-                if (classrooms[0]->MON->TIME->next == NULL) {
+                if (classrooms[0]->MON->TIME->timing == NULL) {
                     classrooms[0]->MON->TIME->timing=time;
                     classrooms[0]->MON->TIME->faculty=faculty;
                     classrooms[0]->MON->TIME->subject=subject;
@@ -97,7 +104,7 @@ int main() {
             }
             else if (!strcmp(day, "Tuesday"))
             {
-                if (classrooms[0]->TUE->TIME->next == NULL) {
+                if (classrooms[0]->TUE->TIME->timing == NULL) {
                     classrooms[0]->TUE->TIME->timing=time;
                     classrooms[0]->TUE->TIME->faculty=faculty;
                     classrooms[0]->TUE->TIME->subject=subject;
@@ -111,7 +118,7 @@ int main() {
             }
             else if (!strcmp(day, "Wednesday"))
             {
-                if (classrooms[0]->WED->TIME->next == NULL) {
+                if (classrooms[0]->WED->TIME->timing == NULL) {
                     classrooms[0]->WED->TIME->timing=time;
                     classrooms[0]->WED->TIME->faculty=faculty;
                     classrooms[0]->WED->TIME->subject=subject;
@@ -125,7 +132,7 @@ int main() {
             }
             else if (!strcmp(day, "Thursday"))
             {   
-                if (classrooms[0]->THU->TIME->next == NULL) {
+                if (classrooms[0]->THU->TIME->timing == NULL) {
                     classrooms[0]->THU->TIME->timing=time;
                     classrooms[0]->THU->TIME->faculty=faculty;
                     classrooms[0]->THU->TIME->subject=subject;
@@ -139,7 +146,7 @@ int main() {
             }
             else if (!strcmp(day, "Friday"))
             {   
-                if (classrooms[0]->FRI->TIME->next == NULL) {
+                if (classrooms[0]->FRI->TIME->timing == NULL) {
                     classrooms[0]->FRI->TIME->timing=time;
                     classrooms[0]->FRI->TIME->faculty=faculty;
                     classrooms[0]->FRI->TIME->subject=subject;
@@ -155,272 +162,524 @@ int main() {
         else if (!strcmp(class, "AC-102"))
         {
             if (!strcmp(day, "Monday"))
-            {
-                classrooms[1]->MON->TIME->timing=time;
-                classrooms[1]->MON->TIME->faculty=faculty;
-                classrooms[1]->MON->TIME->subject=subject;
-                classrooms[1]->MON->TIME->division=batch;
+            {   
+                // this is written to check if the linked list is empty or not and then operation is done accordingly
+                if (classrooms[1]->MON->TIME->timing == NULL) {
+                    classrooms[1]->MON->TIME->timing=time;
+                    classrooms[1]->MON->TIME->faculty=faculty;
+                    classrooms[1]->MON->TIME->subject=subject;
+                    classrooms[1]->MON->TIME->division= batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[1]->MON->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Tuesday"))
             {
-                classrooms[1]->TUE->TIME->timing=time;
-                classrooms[1]->TUE->TIME->faculty=faculty;
-                classrooms[1]->TUE->TIME->subject=subject;
-                classrooms[1]->TUE->TIME->division=batch;
+                if (classrooms[1]->TUE->TIME->timing == NULL) {
+                    classrooms[1]->TUE->TIME->timing=time;
+                    classrooms[1]->TUE->TIME->faculty=faculty;
+                    classrooms[1]->TUE->TIME->subject=subject;
+                    classrooms[1]->TUE->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[1]->TUE->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Wednesday"))
             {
-                classrooms[1]->WED->TIME->timing=time;
-                classrooms[1]->WED->TIME->faculty=faculty;
-                classrooms[1]->WED->TIME->subject=subject;
-                classrooms[1]->WED->TIME->division=batch;
+                if (classrooms[1]->WED->TIME->timing == NULL) {
+                    classrooms[1]->WED->TIME->timing=time;
+                    classrooms[1]->WED->TIME->faculty=faculty;
+                    classrooms[1]->WED->TIME->subject=subject;
+                    classrooms[1]->WED->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[1]->WED->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Thursday"))
-            {
-                classrooms[1]->THU->TIME->timing=time;
-                classrooms[1]->THU->TIME->faculty=faculty;
-                classrooms[1]->THU->TIME->subject=subject;
-                classrooms[1]->THU->TIME->division=batch;
+            {   
+                if (classrooms[1]->THU->TIME->timing == NULL) {
+                    classrooms[1]->THU->TIME->timing=time;
+                    classrooms[1]->THU->TIME->faculty=faculty;
+                    classrooms[1]->THU->TIME->subject=subject;
+                    classrooms[1]->THU->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[1]->THU->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Friday"))
-            {
-                classrooms[1]->FRI->TIME->timing=time;
-                classrooms[1]->FRI->TIME->faculty=faculty;
-                classrooms[1]->FRI->TIME->subject=subject;
-                classrooms[1]->FRI->TIME->division=batch;
+            {   
+                if (classrooms[1]->FRI->TIME->timing == NULL) {
+                    classrooms[1]->FRI->TIME->timing=time;
+                    classrooms[1]->FRI->TIME->faculty=faculty;
+                    classrooms[1]->FRI->TIME->subject=subject;
+                    classrooms[1]->FRI->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[1]->FRI->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
         }
         else if (!strcmp(class, "AC-103"))
         {
-            if (!strcmp(day, "Monday"))
-            {
-                classrooms[2]->MON->TIME->timing=time;
-                classrooms[2]->MON->TIME->faculty=faculty;
-                classrooms[2]->MON->TIME->subject=subject;
-                classrooms[2]->MON->TIME->division=batch;
+        if (!strcmp(day, "Monday"))
+            {   
+                // this is written to check if the linked list is empty or not and then operation is done accordingly
+                if (classrooms[2]->MON->TIME->timing == NULL) {
+                    classrooms[2]->MON->TIME->timing=time;
+                    classrooms[2]->MON->TIME->faculty=faculty;
+                    classrooms[2]->MON->TIME->subject=subject;
+                    classrooms[2]->MON->TIME->division= batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[2]->MON->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Tuesday"))
             {
-                classrooms[2]->TUE->TIME->timing=time;
-                classrooms[2]->TUE->TIME->faculty=faculty;
-                classrooms[2]->TUE->TIME->subject=subject;
-                classrooms[2]->TUE->TIME->division=batch;
+                if (classrooms[2]->TUE->TIME->timing == NULL) {
+                    classrooms[2]->TUE->TIME->timing=time;
+                    classrooms[2]->TUE->TIME->faculty=faculty;
+                    classrooms[2]->TUE->TIME->subject=subject;
+                    classrooms[2]->TUE->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[2]->TUE->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Wednesday"))
             {
-                classrooms[2]->WED->TIME->timing=time;
-                classrooms[2]->WED->TIME->faculty=faculty;
-                classrooms[2]->WED->TIME->subject=subject;
-                classrooms[2]->WED->TIME->division=batch;
+                if (classrooms[2]->WED->TIME->timing == NULL) {
+                    classrooms[2]->WED->TIME->timing=time;
+                    classrooms[2]->WED->TIME->faculty=faculty;
+                    classrooms[2]->WED->TIME->subject=subject;
+                    classrooms[2]->WED->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[2]->WED->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Thursday"))
-            {
-                classrooms[2]->THU->TIME->timing=time;
-                classrooms[2]->THU->TIME->faculty=faculty;
-                classrooms[2]->THU->TIME->subject=subject;
-                classrooms[2]->THU->TIME->division=batch;
+            {   
+                if (classrooms[2]->THU->TIME->timing == NULL) {
+                    classrooms[2]->THU->TIME->timing=time;
+                    classrooms[2]->THU->TIME->faculty=faculty;
+                    classrooms[2]->THU->TIME->subject=subject;
+                    classrooms[2]->THU->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[2]->THU->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Friday"))
-            {
-                classrooms[2]->FRI->TIME->timing=time;
-                classrooms[2]->FRI->TIME->faculty=faculty;
-                classrooms[2]->FRI->TIME->subject=subject;
-                classrooms[2]->FRI->TIME->division=batch;
+            {   
+                if (classrooms[2]->FRI->TIME->timing == NULL) {
+                    classrooms[2]->FRI->TIME->timing=time;
+                    classrooms[2]->FRI->TIME->faculty=faculty;
+                    classrooms[2]->FRI->TIME->subject=subject;
+                    classrooms[2]->FRI->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[2]->FRI->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
         }
         else if (!strcmp(class, "AC-104"))
         {
             if (!strcmp(day, "Monday"))
-            {
-                classrooms[3]->MON->TIME->timing=time;
-                classrooms[3]->MON->TIME->faculty=faculty;
-                classrooms[3]->MON->TIME->subject=subject;
-                classrooms[3]->MON->TIME->division=batch;
+            {   
+                // this is written to check if the linked list is empty or not and then operation is done accordingly
+                if (classrooms[3]->MON->TIME->timing == NULL) {
+                    classrooms[3]->MON->TIME->timing=time;
+                    classrooms[3]->MON->TIME->faculty=faculty;
+                    classrooms[3]->MON->TIME->subject=subject;
+                    classrooms[3]->MON->TIME->division= batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[3]->MON->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Tuesday"))
             {
-                classrooms[3]->TUE->TIME->timing=time;
-                classrooms[3]->TUE->TIME->faculty=faculty;
-                classrooms[3]->TUE->TIME->subject=subject;
-                classrooms[3]->TUE->TIME->division=batch;
+                if (classrooms[3]->TUE->TIME->timing == NULL) {
+                    classrooms[3]->TUE->TIME->timing=time;
+                    classrooms[3]->TUE->TIME->faculty=faculty;
+                    classrooms[3]->TUE->TIME->subject=subject;
+                    classrooms[3]->TUE->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[3]->TUE->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Wednesday"))
             {
-                classrooms[3]->WED->TIME->timing=time;
-                classrooms[3]->WED->TIME->faculty=faculty;
-                classrooms[3]->WED->TIME->subject=subject;
-                classrooms[3]->WED->TIME->division=batch;
+                if (classrooms[3]->WED->TIME->timing == NULL) {
+                    classrooms[3]->WED->TIME->timing=time;
+                    classrooms[3]->WED->TIME->faculty=faculty;
+                    classrooms[3]->WED->TIME->subject=subject;
+                    classrooms[3]->WED->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[3]->WED->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Thursday"))
-            {
-                classrooms[3]->THU->TIME->timing=time;
-                classrooms[3]->THU->TIME->faculty=faculty;
-                classrooms[3]->THU->TIME->subject=subject;
-                classrooms[3]->THU->TIME->division=batch;
+            {   
+                if (classrooms[3]->THU->TIME->timing == NULL) {
+                    classrooms[3]->THU->TIME->timing=time;
+                    classrooms[3]->THU->TIME->faculty=faculty;
+                    classrooms[3]->THU->TIME->subject=subject;
+                    classrooms[3]->THU->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[3]->THU->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Friday"))
-            {
-                classrooms[3]->FRI->TIME->timing=time;
-                classrooms[3]->FRI->TIME->faculty=faculty;
-                classrooms[3]->FRI->TIME->subject=subject;
-                classrooms[3]->FRI->TIME->division=batch;
+            {   
+                if (classrooms[3]->FRI->TIME->timing == NULL) {
+                    classrooms[3]->FRI->TIME->timing=time;
+                    classrooms[3]->FRI->TIME->faculty=faculty;
+                    classrooms[3]->FRI->TIME->subject=subject;
+                    classrooms[3]->FRI->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[3]->FRI->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
         }
         else if (!strcmp(class, "AC-201"))
         {
-            if (!strcmp(day, "Monday"))
-            {
-                classrooms[4]->MON->TIME->timing=time;
-                classrooms[4]->MON->TIME->faculty=faculty;
-                classrooms[4]->MON->TIME->subject=subject;
-                classrooms[4]->MON->TIME->division=batch;
+           if (!strcmp(day, "Monday"))
+            {   
+                // this is written to check if the linked list is empty or not and then operation is done accordingly
+                if (classrooms[4]->MON->TIME->timing == NULL) {
+                    classrooms[4]->MON->TIME->timing=time;
+                    classrooms[4]->MON->TIME->faculty=faculty;
+                    classrooms[4]->MON->TIME->subject=subject;
+                    classrooms[4]->MON->TIME->division= batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[4]->MON->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Tuesday"))
             {
-                classrooms[4]->TUE->TIME->timing=time;
-                classrooms[4]->TUE->TIME->faculty=faculty;
-                classrooms[4]->TUE->TIME->subject=subject;
-                classrooms[4]->TUE->TIME->division=batch;
+                if (classrooms[4]->TUE->TIME->timing == NULL) {
+                    classrooms[4]->TUE->TIME->timing=time;
+                    classrooms[4]->TUE->TIME->faculty=faculty;
+                    classrooms[4]->TUE->TIME->subject=subject;
+                    classrooms[4]->TUE->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[4]->TUE->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Wednesday"))
             {
-                classrooms[4]->WED->TIME->timing=time;
-                classrooms[4]->WED->TIME->faculty=faculty;
-                classrooms[4]->WED->TIME->subject=subject;
-                classrooms[4]->WED->TIME->division=batch;
+                if (classrooms[4]->WED->TIME->timing == NULL) {
+                    classrooms[4]->WED->TIME->timing=time;
+                    classrooms[4]->WED->TIME->faculty=faculty;
+                    classrooms[4]->WED->TIME->subject=subject;
+                    classrooms[4]->WED->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[4]->WED->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Thursday"))
-            {
-                classrooms[4]->THU->TIME->timing=time;
-                classrooms[4]->THU->TIME->faculty=faculty;
-                classrooms[4]->THU->TIME->subject=subject;
-                classrooms[4]->THU->TIME->division=batch;
+            {   
+                if (classrooms[4]->THU->TIME->timing == NULL) {
+                    classrooms[4]->THU->TIME->timing=time;
+                    classrooms[4]->THU->TIME->faculty=faculty;
+                    classrooms[4]->THU->TIME->subject=subject;
+                    classrooms[4]->THU->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[4]->THU->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Friday"))
-            {
-                classrooms[4]->FRI->TIME->timing=time;
-                classrooms[4]->FRI->TIME->faculty=faculty;
-                classrooms[4]->FRI->TIME->subject=subject;
-                classrooms[4]->FRI->TIME->division=batch;
+            {   
+                if (classrooms[4]->FRI->TIME->timing == NULL) {
+                    classrooms[4]->FRI->TIME->timing=time;
+                    classrooms[4]->FRI->TIME->faculty=faculty;
+                    classrooms[4]->FRI->TIME->subject=subject;
+                    classrooms[4]->FRI->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[4]->FRI->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
         }
         else if (!strcmp(class, "AC-202"))
         {
             if (!strcmp(day, "Monday"))
-            {
-                classrooms[5]->MON->TIME->timing=time;
-                classrooms[5]->MON->TIME->faculty=faculty;
-                classrooms[5]->MON->TIME->subject=subject;
-                classrooms[5]->MON->TIME->division=batch;
+            {   
+                // this is written to check if the linked list is empty or not and then operation is done accordingly
+                if (classrooms[5]->MON->TIME->timing == NULL) {
+                    classrooms[5]->MON->TIME->timing=time;
+                    classrooms[5]->MON->TIME->faculty=faculty;
+                    classrooms[5]->MON->TIME->subject=subject;
+                    classrooms[5]->MON->TIME->division= batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[5]->MON->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Tuesday"))
             {
-                classrooms[5]->TUE->TIME->timing=time;
-                classrooms[5]->TUE->TIME->faculty=faculty;
-                classrooms[5]->TUE->TIME->subject=subject;
-                classrooms[5]->TUE->TIME->division=batch;
+                if (classrooms[5]->TUE->TIME->timing == NULL) {
+                    classrooms[5]->TUE->TIME->timing=time;
+                    classrooms[5]->TUE->TIME->faculty=faculty;
+                    classrooms[5]->TUE->TIME->subject=subject;
+                    classrooms[5]->TUE->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[5]->TUE->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Wednesday"))
             {
-                classrooms[5]->WED->TIME->timing=time;
-                classrooms[5]->WED->TIME->faculty=faculty;
-                classrooms[5]->WED->TIME->subject=subject;
-                classrooms[5]->WED->TIME->division=batch;
+                if (classrooms[5]->WED->TIME->timing == NULL) {
+                    classrooms[5]->WED->TIME->timing=time;
+                    classrooms[5]->WED->TIME->faculty=faculty;
+                    classrooms[5]->WED->TIME->subject=subject;
+                    classrooms[5]->WED->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[5]->WED->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Thursday"))
-            {
-                classrooms[5]->THU->TIME->timing=time;
-                classrooms[5]->THU->TIME->faculty=faculty;
-                classrooms[5]->THU->TIME->subject=subject;
-                classrooms[5]->THU->TIME->division=batch;
+            {   
+                if (classrooms[5]->THU->TIME->timing == NULL) {
+                    classrooms[5]->THU->TIME->timing=time;
+                    classrooms[5]->THU->TIME->faculty=faculty;
+                    classrooms[5]->THU->TIME->subject=subject;
+                    classrooms[5]->THU->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[5]->THU->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Friday"))
-            {
-                classrooms[5]->FRI->TIME->timing=time;
-                classrooms[5]->FRI->TIME->faculty=faculty;
-                classrooms[5]->FRI->TIME->subject=subject;
-                classrooms[5]->FRI->TIME->division=batch;
+            {   
+                if (classrooms[5]->FRI->TIME->timing == NULL) {
+                    classrooms[5]->FRI->TIME->timing=time;
+                    classrooms[5]->FRI->TIME->faculty=faculty;
+                    classrooms[5]->FRI->TIME->subject=subject;
+                    classrooms[5]->FRI->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[5]->FRI->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
         }
         else if (!strcmp(class, "AC-203"))
         {
             if (!strcmp(day, "Monday"))
-            {
-                classrooms[6]->MON->TIME->timing=time;
-                classrooms[6]->MON->TIME->faculty=faculty;
-                classrooms[6]->MON->TIME->subject=subject;
-                classrooms[6]->MON->TIME->division=batch;
+            {   
+                // this is written to check if the linked list is empty or not and then operation is done accordingly
+                if (classrooms[6]->MON->TIME->timing == NULL) {
+                    classrooms[6]->MON->TIME->timing=time;
+                    classrooms[6]->MON->TIME->faculty=faculty;
+                    classrooms[6]->MON->TIME->subject=subject;
+                    classrooms[6]->MON->TIME->division= batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[6]->MON->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Tuesday"))
             {
-                classrooms[6]->TUE->TIME->timing=time;
-                classrooms[6]->TUE->TIME->faculty=faculty;
-                classrooms[6]->TUE->TIME->subject=subject;
-                classrooms[6]->TUE->TIME->division=batch;
+                if (classrooms[6]->TUE->TIME->timing == NULL) {
+                    classrooms[6]->TUE->TIME->timing=time;
+                    classrooms[6]->TUE->TIME->faculty=faculty;
+                    classrooms[6]->TUE->TIME->subject=subject;
+                    classrooms[6]->TUE->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[6]->TUE->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Wednesday"))
             {
-                classrooms[6]->WED->TIME->timing=time;
-                classrooms[6]->WED->TIME->faculty=faculty;
-                classrooms[6]->WED->TIME->subject=subject;
-                classrooms[6]->WED->TIME->division=batch;
+                if (classrooms[6]->WED->TIME->timing == NULL) {
+                    classrooms[6]->WED->TIME->timing=time;
+                    classrooms[6]->WED->TIME->faculty=faculty;
+                    classrooms[6]->WED->TIME->subject=subject;
+                    classrooms[6]->WED->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[6]->WED->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Thursday"))
-            {
-                classrooms[6]->THU->TIME->timing=time;
-                classrooms[6]->THU->TIME->faculty=faculty;
-                classrooms[6]->THU->TIME->subject=subject;
-                classrooms[6]->THU->TIME->division=batch;
+            {   
+                if (classrooms[6]->THU->TIME->timing == NULL) {
+                    classrooms[6]->THU->TIME->timing=time;
+                    classrooms[6]->THU->TIME->faculty=faculty;
+                    classrooms[6]->THU->TIME->subject=subject;
+                    classrooms[6]->THU->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[6]->THU->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Friday"))
-            {
-                classrooms[6]->FRI->TIME->timing=time;
-                classrooms[6]->FRI->TIME->faculty=faculty;
-                classrooms[6]->FRI->TIME->subject=subject;
-                classrooms[6]->FRI->TIME->division=batch;
+            {   
+                if (classrooms[6]->FRI->TIME->timing == NULL) {
+                    classrooms[6]->FRI->TIME->timing=time;
+                    classrooms[6]->FRI->TIME->faculty=faculty;
+                    classrooms[6]->FRI->TIME->subject=subject;
+                    classrooms[6]->FRI->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[6]->FRI->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
         }
         else if (!strcmp(class, "AC-204"))
         {
             if (!strcmp(day, "Monday"))
-            {
-                classrooms[7]->MON->TIME->timing=time;
-                classrooms[7]->MON->TIME->faculty=faculty;
-                classrooms[7]->MON->TIME->subject=subject;
-                classrooms[7]->MON->TIME->division=batch;
+            {   
+                // this is written to check if the linked list is empty or not and then operation is done accordingly
+                if (classrooms[7]->MON->TIME->timing == NULL) {
+                    classrooms[7]->MON->TIME->timing=time;
+                    classrooms[7]->MON->TIME->faculty=faculty;
+                    classrooms[7]->MON->TIME->subject=subject;
+                    classrooms[7]->MON->TIME->division= batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[7]->MON->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Tuesday"))
             {
-                classrooms[7]->TUE->TIME->timing=time;
-                classrooms[7]->TUE->TIME->faculty=faculty;
-                classrooms[7]->TUE->TIME->subject=subject;
-                classrooms[7]->TUE->TIME->division=batch;
+                if (classrooms[7]->TUE->TIME->timing == NULL) {
+                    classrooms[7]->TUE->TIME->timing=time;
+                    classrooms[7]->TUE->TIME->faculty=faculty;
+                    classrooms[7]->TUE->TIME->subject=subject;
+                    classrooms[7]->TUE->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[7]->TUE->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Wednesday"))
             {
-                classrooms[7]->WED->TIME->timing=time;
-                classrooms[7]->WED->TIME->faculty=faculty;
-                classrooms[7]->WED->TIME->subject=subject;
-                classrooms[7]->WED->TIME->division=batch;
+                if (classrooms[7]->WED->TIME->timing == NULL) {
+                    classrooms[7]->WED->TIME->timing=time;
+                    classrooms[7]->WED->TIME->faculty=faculty;
+                    classrooms[7]->WED->TIME->subject=subject;
+                    classrooms[7]->WED->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[7]->WED->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Thursday"))
-            {
-                classrooms[7]->THU->TIME->timing=time;
-                classrooms[7]->THU->TIME->faculty=faculty;
-                classrooms[7]->THU->TIME->subject=subject;
-                classrooms[7]->THU->TIME->division=batch;
+            {   
+                if (classrooms[7]->THU->TIME->timing == NULL) {
+                    classrooms[7]->THU->TIME->timing=time;
+                    classrooms[7]->THU->TIME->faculty=faculty;
+                    classrooms[7]->THU->TIME->subject=subject;
+                    classrooms[7]->THU->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[7]->THU->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
             else if (!strcmp(day, "Friday"))
-            {
-                classrooms[7]->FRI->TIME->timing=time;
-                classrooms[7]->FRI->TIME->faculty=faculty;
-                classrooms[7]->FRI->TIME->subject=subject;
-                classrooms[7]->FRI->TIME->division=batch;
+            {   
+                if (classrooms[7]->FRI->TIME->timing == NULL) {
+                    classrooms[7]->FRI->TIME->timing=time;
+                    classrooms[7]->FRI->TIME->faculty=faculty;
+                    classrooms[7]->FRI->TIME->subject=subject;
+                    classrooms[7]->FRI->TIME->division=batch;
+                }
+                else {
+                    time_slot_node *temp = classrooms[7]->FRI->TIME;
+                    while (temp->next != NULL) temp = temp->next;
+                    temp->next = create_New_time_slot_node(time, faculty, subject, batch);
+                }
             }
         }
         // }
     }
-    display_schedule();
+    display_Monday_schedule();
 
     return 0;
 }

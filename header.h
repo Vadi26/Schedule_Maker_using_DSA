@@ -35,26 +35,31 @@ CN *allocate_memory_for_classroom(char *classroom_name) {
     classrooms->MON->weekday="MONDAY";
     classrooms->MON->TIME = (time_slot_node *)malloc(sizeof(time_slot_node));
     classrooms->MON->TIME->next=classrooms->MON->TIME->prev=NULL;
+    classrooms->MON->TIME->timing = NULL;
 
     classrooms->TUE=(day_node*)malloc(sizeof(day_node));
     classrooms->TUE->weekday="TUESDAY";
     classrooms->TUE->TIME = (time_slot_node *)malloc(sizeof(time_slot_node));
     classrooms->TUE->TIME->next=classrooms->TUE->TIME->prev=NULL;
+    classrooms->TUE->TIME->timing = NULL;
 
     classrooms->WED=(day_node*)malloc(sizeof(day_node));
     classrooms->WED->weekday="WEDNESDAY";
     classrooms->WED->TIME = (time_slot_node *)malloc(sizeof(time_slot_node));
     classrooms->WED->TIME->next=classrooms->WED->TIME->prev=NULL;
+    classrooms->WED->TIME->timing = NULL;
     
     classrooms->THU=(day_node*)malloc(sizeof(day_node));
     classrooms->THU->weekday="THURSDAY";
     classrooms->THU->TIME = (time_slot_node *)malloc(sizeof(time_slot_node));
     classrooms->THU->TIME->next=classrooms->THU->TIME->prev=NULL;
+    classrooms->THU->TIME->timing = NULL;
 
     classrooms->FRI=(day_node*)malloc(sizeof(day_node));
     classrooms->FRI->weekday="FRIDAY";
     classrooms->FRI->TIME = (time_slot_node *)malloc(sizeof(time_slot_node));
     classrooms->FRI->TIME->next=classrooms->FRI->TIME->prev=NULL;
+    classrooms->FRI->TIME->timing = NULL;
 
     return classrooms;
 }
