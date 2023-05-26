@@ -1,91 +1,5 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include"header.h"
-
-void display_Monday_schedule() {
-    time_slot_node *temp = NULL;
-    for (int i = 0; i < 7; i++) {
-        temp = classrooms[i]->TUE->TIME;
-        printf("%s %s %s %s %s %s \n", classrooms[i]->classroom_name, classrooms[i]->TUE->weekday, classrooms[i]->TUE->TIME->timing, classrooms[i]->TUE->TIME->faculty, classrooms[i]->TUE->TIME->subject, classrooms[i]->TUE->TIME->division);
-        while (temp != NULL) {
-            printf("\t %s %s %s %s \n", temp->timing, temp->faculty, temp->subject, temp->division);
-            temp = temp->next;
-        }
-    }
-
-}
-
-int main() {
-    // Allocate memory and initialize each classroom
-    classrooms[0] = allocate_memory_for_classroom("AC-101");
-    classrooms[1] = allocate_memory_for_classroom("AC-102");
-    classrooms[2] = allocate_memory_for_classroom("AC-103");
-    classrooms[3] = allocate_memory_for_classroom("AC-104");
-    classrooms[4] = allocate_memory_for_classroom("AC-201");
-    classrooms[5] = allocate_memory_for_classroom("AC-202");
-    classrooms[6] = allocate_memory_for_classroom("AC-203");
-    classrooms[7] = allocate_memory_for_classroom("AC-204");
-
-    FILE *csv_file = fopen("database.csv", "r");
-    if (csv_file == NULL) {
-        perror("Unable to open the file :(");
-        exit(1);
-    }
-
-    char line[1024];
-    int column = 0, row = 0;
-    char *class, *batch, *faculty, *time, *day, *subject;
-
-    while(fgets(line, sizeof(line), csv_file)) {
-        column = 0;
-        row++;
-        // if (row == 1) continue;
-        char *token;
-        token = strtok(line, ",");
-        while(token != NULL) {
-            if (column == 0) {
-                // if (token == "LUNCH") break;
-                class = token;
-            }
-
-            // Column 2
-            if (column == 1) {
-                // Connect the classroom element with weekday
-                day=token;
-            }
-
-            // Column 3
-            if (column == 2) {
-                // Connect the weekday with linked list of time slots
-                time= token;
-            }
-
-            // Column 4
-            if (column == 3) {
-                // Add faculty in the node which time slot will point to
-                faculty= token;
-            }
-
-            // Column 5
-            if (column == 4) {
-                // Add subject ...
-                subject=token;
-            }
-
-            // Column 6
-            if (column == 5) {
-                // Add class/division
-                batch=token;
-            }
-
-            // printf("%s", token);
-            token = strtok(NULL, ", ");
-            column++;
-        }
-        // if (!strcmp(token, "LUNCH")) continue;
-        // else {
-        if (!strcmp(class, "AC-101"))
+/*
+       if (!strcmp(class, "AC-101"))
         {   
             if (!strcmp(day, "Monday"))
             {   
@@ -678,8 +592,4 @@ int main() {
             }
         }
         // }
-    }
-    display_Monday_schedule();
-
-    return 0;
-}
+*/
