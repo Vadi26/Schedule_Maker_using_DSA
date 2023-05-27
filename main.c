@@ -8,10 +8,18 @@ void display_Monday_schedule() {
     for (int i = 0; i < 7; i++) {
         temp = classrooms[i]->MON->TIME;
         printf("%s %s %s %s %s %s \n", classrooms[i]->classroom_name, classrooms[i]->MON->weekday, classrooms[i]->MON->TIME->timing, classrooms[i]->MON->TIME->faculty, classrooms[i]->MON->TIME->subject, classrooms[i]->MON->TIME->division);
-        while (temp != NULL) {
-            printf("\t %s %s %s %s \n", temp->timing, temp->faculty, temp->subject, temp->division);
-            temp = temp->next;
-        }
+        // while (temp != NULL) {
+        //     printf("\t %s %s %s %s \n", temp->timing, temp->faculty, temp->subject, temp->division);
+        //     temp = temp->next;
+        // }
+    }
+    for (int i = 0; i < 7; i++) {
+        temp = classrooms[i]->TUE->TIME;
+        printf("%s %s %s %s %s %s \n", classrooms[i]->classroom_name, classrooms[i]->TUE->weekday, classrooms[i]->TUE->TIME->timing, classrooms[i]->TUE->TIME->faculty, classrooms[i]->TUE->TIME->subject, classrooms[i]->TUE->TIME->division);
+        // while (temp != NULL) {
+        //     printf("\t %s %s %s %s \n", temp->timing, temp->faculty, temp->subject, temp->division);
+        //     temp = temp->next;
+        // }
     }
 
 }
@@ -680,6 +688,6 @@ int main() {
         // }
     }
     display_Monday_schedule();
-
+    for (int i = 0; i < 8; i++) free(classrooms[i]);
     return 0;
 }
