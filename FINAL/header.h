@@ -1,26 +1,6 @@
-// #include<stdio.h>
-// #include<string.h>
-// #include<stdlib.h>
-
-// typedef struct ll_Node {
-//     char *classroom_name;
-//     char *weekday;
-//     char *time;
-//     char *faculty;
-//     char *subject;
-//     char *batch;
-// }ll_Node;
-
-// typedef struct ll_ll_Node {
-//     ll_Node *schedule_ll_Node;
-//     struct ll_ll_Node *prev, *next;
-// }ll_ll_Node;
-
-// ll_ll_Node *LL_array[5]; 
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
 
 // Structure to represent a single class
 typedef struct {
@@ -100,29 +80,4 @@ void displayTimetable() {
             }
         }
     }
-}
-
-int main() {
-    // Read data from CSV file and populate the timetable
-    FILE* file = fopen("database.csv", "r");
-    if (file == NULL) {
-        printf("Failed to open the file.\n");
-        return 1;
-    }
-    
-    char line[256];
-    while (fgets(line, sizeof(line), file)) {
-        Class classData;
-        sscanf(line, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]", 
-               classData.classroom, classData.day, classData.time,
-               classData.faculty, classData.subject, classData.class_name);
-        insertClass(classData);
-    }
-    
-    fclose(file);
-    
-    // Display the timetable
-    displayTimetable();
-    
-    return 0;
 }

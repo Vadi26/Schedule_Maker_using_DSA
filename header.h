@@ -2,75 +2,82 @@
 #include<stdlib.h>
 #include<string.h>
 
-typedef struct time_slot_node {
-    char *timing;
-    char *faculty;
-    char *subject;
-    char *division;
-    struct time_slot_node *next, *prev;
-}time_slot_node;
+// Structure to represent a single class
+typedef struct {
+    char classroom[50];
+    char day[20];
+    char time[20];
+    char faculty[50];
+    char subject[50];
+    char class_name[50];
+} Class;
 
-typedef struct day_node {
-    char *weekday;
-    time_slot_node *TIME;
-}day_node;
+// Structure to represent a ll_Node in the linked list
+typedef struct ll_Node {
+    Class data;
+    struct ll_Node* next;
+} ll_Node;
 
-typedef struct classroom_node {
-    char *classroom_name;
-    day_node *MON;
-    day_node *TUE;
-    day_node *WED;
-    day_node *THU;
-    day_node *FRI;
-}CN;
+// Array of linked lists to store the timetable
+ll_Node* timetable[5]; // Assuming 5 working days (Monday to Friday)
 
-// Created the array of classrooms
-CN* classrooms[8];
-
-CN *allocate_memory_for_classroom(char *classroom_name) {
-    CN *classrooms = NULL;
-    classrooms = (CN*)malloc(sizeof(CN));
-    classrooms->classroom_name = classroom_name;
-    classrooms->MON=(day_node*)malloc(sizeof(day_node));
-    classrooms->MON->weekday="MONDAY";
-    classrooms->MON->TIME = (time_slot_node *)malloc(sizeof(time_slot_node));
-    classrooms->MON->TIME->next=classrooms->MON->TIME->prev=NULL;
-    classrooms->MON->TIME->timing = NULL;
-
-    classrooms->TUE=(day_node*)malloc(sizeof(day_node));
-    classrooms->TUE->weekday="TUESDAY";
-    classrooms->TUE->TIME = (time_slot_node *)malloc(sizeof(time_slot_node));
-    classrooms->TUE->TIME->next=classrooms->TUE->TIME->prev=NULL;
-    classrooms->TUE->TIME->timing = NULL;
-
-    classrooms->WED=(day_node*)malloc(sizeof(day_node));
-    classrooms->WED->weekday="WEDNESDAY";
-    classrooms->WED->TIME = (time_slot_node *)malloc(sizeof(time_slot_node));
-    classrooms->WED->TIME->next=classrooms->WED->TIME->prev=NULL;
-    classrooms->WED->TIME->timing = NULL;
-    
-    classrooms->THU=(day_node*)malloc(sizeof(day_node));
-    classrooms->THU->weekday="THURSDAY";
-    classrooms->THU->TIME = (time_slot_node *)malloc(sizeof(time_slot_node));
-    classrooms->THU->TIME->next=classrooms->THU->TIME->prev=NULL;
-    classrooms->THU->TIME->timing = NULL;
-
-    classrooms->FRI=(day_node*)malloc(sizeof(day_node));
-    classrooms->FRI->weekday="FRIDAY";
-    classrooms->FRI->TIME = (time_slot_node *)malloc(sizeof(time_slot_node));
-    classrooms->FRI->TIME->next=classrooms->FRI->TIME->prev=NULL;
-    classrooms->FRI->TIME->timing = NULL;
-
-    return classrooms;
+// Function to create a new ll_Node with given class data
+ll_Node* createll_Node(Class classData) {
+    ll_Node* newll_Node = (ll_Node*)malloc(sizeof(ll_Node));
+    newll_Node->data = classData;
+    newll_Node->next = NULL;
+    return newll_Node;
 }
 
-time_slot_node *create_New_time_slot_node (char *time, char *faculty, char *subject, char *batch) {
-    time_slot_node *newNode = (time_slot_node *)malloc(sizeof(time_slot_node));
-    newNode->timing = time;
-    newNode->faculty = faculty;
-    newNode->subject = subject;
-    newNode->division = batch;
-    newNode->next = NULL;
+// Function to insert a class into the timetable
+void insertClass(Class classData) {
+    int dayIndex;
+    
+    if (strcmp(classData.day, "Monday") == 0)
+        dayIndex = 0;
+    else if (strcmp(classData.day, "Tuesday") == 0)
+        dayIndex = 1;
+    else if (strcmp(classData.day, "Wednesday") == 0)
+        dayIndex = 2;
+    else if (strcmp(classData.day, "Thursday") == 0)
+        dayIndex = 3;
+    else if (strcmp(classData.day, "Friday") == 0)
+        dayIndex = 4;
+    else {
+        printf("Invalid day!\n");
+        return;
+    }
+    
+    ll_Node* newll_Node = createll_Node(classData);
+    
+    if (timetable[dayIndex] == NULL) {
+        timetable[dayIndex] = newll_Node;
+    } else {
+        ll_Node* current = timetable[dayIndex];
+        while (current->next != NULL) {
+            current = current->next;
+        }
+        current->next = newll_Node;
+    }
+}
 
-    return newNode;
+// Function to display the timetable
+void displayTimetable() {
+    for (int i = 0; i < 5; i++) {
+        printf("Day %d:\n", i + 1);
+        if (timetable[i] == NULL) {
+            printf("No classes scheduled\n");
+        } else {
+            ll_Node* current = timetable[i];
+            while (current != NULL) {
+                printf("Classroom: %s\n", current->data.classroom);
+                printf("Time: %s\n", current->data.time);
+                printf("Faculty: %s\n", current->data.faculty);
+                printf("Subject: %s\n", current->data.subject);
+                printf("Class: %s\n", current->data.class_name);
+                printf("\n");
+                current = current->next;
+            }
+        }
+    }
 }
