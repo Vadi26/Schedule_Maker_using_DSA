@@ -81,3 +81,156 @@ void displayTimetable() {
         }
     }
 }
+
+// \brief This function will display timetable of the provided faculty
+void display_schedule_for_faculty(char *faculty_name) {
+    for(int i = 0; i < 5; i++) {
+        ll_Node *temp = timetable[i];
+        while (temp != NULL) {
+            if (!strcmp(temp->data.faculty, faculty_name)) printf("%s : \n Time : %s \n Subject : %s \n Classroom : %s \n Batch : %s \n", temp->data.day, temp->data.time, temp->data.subject, temp->data.classroom, temp->data.class_name);
+            temp = temp->next;
+        }
+    }
+}
+
+// \brief function to display timetable of a particular class
+void display_schedule_for_class (char *class_name) {
+    for(int i = 0; i < 5; i++) {
+        ll_Node *temp = timetable[i];
+        if (timetable[i] == NULL) printf("No Schedule");
+        else {
+            while (temp != NULL) {
+                if (!strcmp(temp->data.class_name, class_name)) printf("%s : \n Time : %s \n Subject : %s Faculty : %s \n \n Classroom : %s \n", temp->data.day, temp->data.time, temp->data.subject, temp->data.faculty, temp->data.classroom);
+                temp = temp->next;
+            }
+        }
+    }
+}
+
+char *TIME_SLOTS[10] = {"08:00-09:00", "09:00-10:00", "10:00-11:00", "11:00-12:00", "12:00-13:00", "13:00-14:00", "14:00-15:00", "15:00-16:00", "16:00-17:00", "17:00-18:00"};
+
+// \brief Function to display the free slots of a class on a given day
+void display_free_slots_for_class(char *weekday, char *class_name) {
+    int dayIndex = 0, time_slot_index[10] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+    int i;
+    // time_slot_index will store the index of time slots that are NOT free
+    if (strcmp(weekday, "Monday") == 0)
+        dayIndex = 0;
+    else if (strcmp(weekday, "Tuesday") == 0)
+        dayIndex = 1;
+    else if (strcmp(weekday, "Wednesday") == 0)
+        dayIndex = 2;
+    else if (strcmp(weekday, "Thursday") == 0)
+        dayIndex = 3;
+    else if (strcmp(weekday, "Friday") == 0)
+        dayIndex = 4;
+
+    ll_Node *temp = timetable[dayIndex];
+    while (temp != NULL) {
+        if (!strcmp(temp->data.class_name, class_name)) {
+            for (i = 0; i < 10; i++) {
+                // if (!strcmp(temp->data.classroom, "LUNCH")) time_slot_index[i] = i;
+                if (!strcmp(TIME_SLOTS[i], temp->data.time)) time_slot_index[i] = i;
+            }
+        }
+        temp = temp->next;
+    }
+    printf("Free slots for the class %s are : \n", class_name);
+    for (i = 0; i < 10; i++) {
+        if (time_slot_index[i] == -1) printf("%s \n", TIME_SLOTS[i]);
+    }
+}
+
+// \brief This function will change the integer array such that the indexes which have free slots will have a -1 at that position else it will have a different number
+// Be sure to change the free_time_slot_index array back to its original contents after using the function once
+int free_time_slot_index[10] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+int return_free_slots_for_class(char *weekday, char *class_name) {
+    int dayIndex = 0;
+    int i;
+    // time_slot_index will store the index of time slots that are NOT free
+    if (strcmp(weekday, "Monday") == 0)
+        dayIndex = 0;
+    else if (strcmp(weekday, "Tuesday") == 0)
+        dayIndex = 1;
+    else if (strcmp(weekday, "Wednesday") == 0)
+        dayIndex = 2;
+    else if (strcmp(weekday, "Thursday") == 0)
+        dayIndex = 3;
+    else if (strcmp(weekday, "Friday") == 0)
+        dayIndex = 4;
+
+    ll_Node *temp = timetable[dayIndex];
+    while (temp != NULL) {
+        if (!strcmp(temp->data.class_name, class_name)) {
+            for (i = 0; i < 10; i++) {
+                // if (!strcmp(temp->data.classroom, "LUNCH")) time_slot_index[i] = i;
+                if (!strcmp(TIME_SLOTS[i], temp->data.time)) free_time_slot_index[i] = i;
+            }
+        }
+        temp = temp->next;
+    }
+}
+
+int free_classroom_slot_index[10] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+void display_free_slots_for_classroom(char *weekday, char *classroom_name) {
+    int dayIndex = 0;
+    int i;
+    // time_slot_index will store the index of time slots that are NOT free
+    if (strcmp(weekday, "Monday") == 0)
+        dayIndex = 0;
+    else if (strcmp(weekday, "Tuesday") == 0)
+        dayIndex = 1;
+    else if (strcmp(weekday, "Wednesday") == 0)
+        dayIndex = 2;
+    else if (strcmp(weekday, "Thursday") == 0)
+        dayIndex = 3;
+    else if (strcmp(weekday, "Friday") == 0)
+        dayIndex = 4;
+
+    ll_Node *temp = timetable[dayIndex];
+    while (temp != NULL) {
+        if (!strcmp(temp->data.classroom, classroom_name)) {
+            for (i = 0; i < 10; i++) {
+                // if (!strcmp(temp->data.classroom, "LUNCH")) time_slot_index[i] = i;
+                if (!strcmp(TIME_SLOTS[i], temp->data.time)) free_classroom_slot_index[i] = i;
+            }
+        }
+        temp = temp->next;
+    }
+    printf("Free slots for the classroom %s are : \n", classroom_name);
+    for (i = 0; i < 10; i++) {
+        if (free_classroom_slot_index[i] == -1) printf("%s \n", TIME_SLOTS[i]);
+    }
+}
+
+// \brief This function will change the integer array such that the indexes which have free slots will have a -1 at that position else it will have a different number
+// Be sure to change the free_classroom_slot_index array back to its original contents after using the function once
+int return_free_slots_for_classroom(char *weekday, char *classroom_name) {
+    int dayIndex = 0;
+    int i;
+    // time_slot_index will store the index of time slots that are NOT free
+    if (strcmp(weekday, "Monday") == 0)
+        dayIndex = 0;
+    else if (strcmp(weekday, "Tuesday") == 0)
+        dayIndex = 1;
+    else if (strcmp(weekday, "Wednesday") == 0)
+        dayIndex = 2;
+    else if (strcmp(weekday, "Thursday") == 0)
+        dayIndex = 3;
+    else if (strcmp(weekday, "Friday") == 0)
+        dayIndex = 4;
+
+    ll_Node *temp = timetable[dayIndex];
+    while (temp != NULL) {
+        if (!strcmp(temp->data.classroom, classroom_name)) {
+            for (i = 0; i < 10; i++) {
+                // if (!strcmp(temp->data.classroom, "LUNCH")) time_slot_index[i] = i;
+                if (!strcmp(TIME_SLOTS[i], temp->data.time)) free_classroom_slot_index[i] = i;
+            }
+        }
+        temp = temp->next;
+    }
+}
+
+// \brief Function to cancel a lecture. Firstly it will check if the provided time slot had a lecture of that particular faculty or not. If the faculty did not have any lecture at that time then it will print cannot cancel lecture and exit
+void cancel_lecture(char *faculty_name, char *time_slot);

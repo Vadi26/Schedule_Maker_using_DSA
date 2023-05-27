@@ -21,10 +21,14 @@ int main() {
     }
     
     fclose(file);
-    
-    
-    
-    displayTimetable();
+
+    display_free_slots_for_classroom("Monday", "AC-101");
+    // display_free_slots_for_class("Monday", "SY_COMP2");
+    // displayTimetable();
+    // char class_name[30];
+    // scanf("%s", class_name);
+    // display_schedule_for_class(class_name);
+
     
     return 0;
 }
