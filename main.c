@@ -3,6 +3,8 @@
 #include <string.h>
 #include"header.h"
 
+void Reschedule_lecture();
+
 int main() {
     // Read data from CSV file and populate the timetable
     FILE* file = fopen("database.csv", "r");
@@ -22,7 +24,12 @@ int main() {
     
     fclose(file);
 
-    display_free_slots_for_classroom("Monday", "AC-101");
+
+    display_schedule_for_faculty("Ahilya_Dhere");
+    cancel_lecture("Ahilya_Dhere", "11:00-12:00", "Monday");
+    // displayTimetable();
+    display_schedule_for_faculty("Ahilya_Dhere");
+    // display_free_slots_for_classroom("Monday", "AC-101");
     // display_free_slots_for_class("Monday", "SY_COMP2");
     // displayTimetable();
     // char class_name[30];

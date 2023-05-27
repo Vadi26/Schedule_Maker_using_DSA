@@ -70,12 +70,17 @@ void displayTimetable() {
         } else {
             ll_Node* current = timetable[i];
             while (current != NULL) {
-                printf("Classroom: %s\n", current->data.classroom);
-                printf("Time: %s\n", current->data.time);
-                printf("Faculty: %s\n", current->data.faculty);
-                printf("Subject: %s\n", current->data.subject);
-                printf("Class: %s\n", current->data.class_name);
-                printf("\n");
+                if (!strcmp(current->data.faculty, "-")) {
+                    printf("Free slot for class : %s & classroom : %s during %s ", current->data.class_name, current->data.classroom, current->data.time);
+                }
+                else {
+                    printf("Classroom: %s\n", current->data.classroom);
+                    printf("Time: %s\n", current->data.time);
+                    printf("Faculty: %s\n", current->data.faculty);
+                    printf("Subject: %s\n", current->data.subject);
+                    printf("Class: %s\n", current->data.class_name);
+                    printf("\n");
+                }
                 current = current->next;
             }
         }
@@ -233,4 +238,31 @@ int return_free_slots_for_classroom(char *weekday, char *classroom_name) {
 }
 
 // \brief Function to cancel a lecture. Firstly it will check if the provided time slot had a lecture of that particular faculty or not. If the faculty did not have any lecture at that time then it will print cannot cancel lecture and exit
-void cancel_lecture(char *faculty_name, char *time_slot);
+// \brief Once we cancel a lecture, we will replace the corresponding faculty and subject with "-"
+void cancel_lecture(char *faculty_name, char *time_slot, char *weekday) {
+    int dayIndex;
+    if (strcmp(weekday, "Monday") == 0)
+        dayIndex = 0;
+    else if (strcmp(weekday, "Tuesday") == 0)
+        dayIndex = 1;
+    else if (strcmp(weekday, "Wednesday") == 0)
+        dayIndex = 2;
+    else if (strcmp(weekday, "Thursday") == 0)
+        dayIndex = 3;
+    else if (strcmp(weekday, "Friday") == 0)
+        dayIndex = 4;
+
+    ll_Node *temp = timetable[dayIndex];
+    while (temp != NULL) {
+        if (!strcmp(temp->data.faculty, faculty_name)) {
+            if(!strcmp(temp->data.time, time_slot)) {
+                strcpy(temp->data.faculty, "-");
+                strcpy(temp->data.subject, "-");
+                return;
+            }
+        }
+        temp = temp->next;
+    }
+    printf("You don't have a scheduled lecture in the provided time slot :(");
+}
+
