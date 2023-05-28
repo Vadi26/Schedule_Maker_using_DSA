@@ -2,6 +2,8 @@
 #include<stdlib.h>
 #include<string.h>
 
+char *CLASS_ROOMS[8];
+
 // Structure to represent a single class
 typedef struct {
     char classroom[50];
@@ -140,7 +142,7 @@ void display_free_slots_for_class(char *weekday, char *class_name) {
         }
         temp = temp->next;
     }
-    printf("Free slots for the class %s are : \n", class_name);
+    printf("\n");
     for (i = 0; i < 10; i++) {
         if (time_slot_index[i] == -1) printf("%s \n", TIME_SLOTS[i]);
     }
@@ -149,7 +151,7 @@ void display_free_slots_for_class(char *weekday, char *class_name) {
 // \brief This function will change the integer array such that the indexes which have free slots will have a -1 at that position else it will have a different number
 // Be sure to change the free_time_slot_index array back to its original contents after using the function once
 int free_time_slot_index[10] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-int return_free_slots_for_class(char *weekday, char *class_name) {
+void return_free_slots_for_class(char *weekday, char *class_name) {
     int dayIndex = 0;
     int i;
     // time_slot_index will store the index of time slots that are NOT free
@@ -210,7 +212,7 @@ void display_free_slots_for_classroom(char *weekday, char *classroom_name) {
 
 // \brief This function will change the integer array such that the indexes which have free slots will have a -1 at that position else it will have a different number
 // Be sure to change the free_classroom_slot_index array back to its original contents after using the function once
-int return_free_slots_for_classroom(char *weekday, char *classroom_name) {
+void return_free_slots_for_classroom(char *weekday, char *classroom_name) {
     int dayIndex = 0;
     int i;
     // time_slot_index will store the index of time slots that are NOT free
