@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 
-char *CLASS_ROOMS[8];
+char *CLASS_ROOMS[8] = {"AC-101", "AC-102", "AC-103", "AC-104", "AC-201", "AC-202", "AC-203", "AC-204",};
 
 // Structure to represent a single class
 typedef struct {
@@ -81,7 +81,7 @@ void displayTimetable() {
                     printf("Faculty: %s\n", current->data.faculty);
                     printf("Subject: %s\n", current->data.subject);
                     printf("Class: %s\n", current->data.class_name);
-                    printf("\n");
+                    printf("\n \n");
                 }
                 current = current->next;
             }
@@ -178,9 +178,8 @@ void return_free_slots_for_class(char *weekday, char *class_name) {
     }
 }
 
-int free_classroom_slot_index[10] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
 void display_free_slots_for_classroom(char *weekday, char *classroom_name) {
-    int dayIndex = 0;
+    int dayIndex = 0, free_classroom_slot_index[10] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     int i;
     // time_slot_index will store the index of time slots that are NOT free
     if (strcmp(weekday, "Monday") == 0)
@@ -212,6 +211,7 @@ void display_free_slots_for_classroom(char *weekday, char *classroom_name) {
 
 // \brief This function will change the integer array such that the indexes which have free slots will have a -1 at that position else it will have a different number
 // Be sure to change the free_classroom_slot_index array back to its original contents after using the function once
+int free_classroom_slot_index[10] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
 void return_free_slots_for_classroom(char *weekday, char *classroom_name) {
     int dayIndex = 0;
     int i;
@@ -268,3 +268,127 @@ void cancel_lecture(char *faculty_name, char *time_slot, char *weekday) {
     printf("You don't have a scheduled lecture in the provided time slot :(");
 }
 
+void display_free_classrooms_at_given_time(char *weekday, char *time_slot) {
+    int dayIndex = 0, free_time_for_classroom[10] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+    int i;
+    if (strcmp(weekday, "Monday") == 0)
+        dayIndex = 0;
+    else if (strcmp(weekday, "Tuesday") == 0)
+        dayIndex = 1;
+    else if (strcmp(weekday, "Wednesday") == 0)
+        dayIndex = 2;
+    else if (strcmp(weekday, "Thursday") == 0)
+        dayIndex = 3;
+    else if (strcmp(weekday, "Friday") == 0)
+        dayIndex = 4;
+
+    ll_Node *temp = timetable[dayIndex];
+    while (temp != NULL) {
+        if (!strcmp(time_slot, temp->data.time)) {
+            for (i = 0; i < 8; i++) {
+                if (!strcmp(CLASS_ROOMS[i], temp->data.classroom)) free_time_for_classroom[i] = i;
+            }
+        }
+        temp = temp->next;
+    }
+    for (i = 0; i < 8; i++) {
+        if (free_time_for_classroom[i] == -1) printf("%s \n", CLASS_ROOMS[i]);
+    }
+}
+
+int free_time_for_classroom[10] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+void return_free_classrooms_at_given_time(char *weekday, char *time_slot) {
+    int dayIndex = 0;
+    int i;
+    if (strcmp(weekday, "Monday") == 0)
+        dayIndex = 0;
+    else if (strcmp(weekday, "Tuesday") == 0)
+        dayIndex = 1;
+    else if (strcmp(weekday, "Wednesday") == 0)
+        dayIndex = 2;
+    else if (strcmp(weekday, "Thursday") == 0)
+        dayIndex = 3;
+    else if (strcmp(weekday, "Friday") == 0)
+        dayIndex = 4;
+
+    ll_Node *temp = timetable[dayIndex];
+    while (temp != NULL) {
+        if (!strcmp(time_slot, temp->data.time)) {
+            for (i = 0; i < 8; i++) {
+                if (!strcmp(CLASS_ROOMS[i], temp->data.classroom)) free_time_for_classroom[i] = i;
+            }
+        }
+        temp = temp->next;
+    }
+}
+
+// \brief Returns the index of token string in TIME_SLOTS array
+int get_Index_for_TIME_SLOTS(char *token) {
+    for (int i = 0; i < 8; i++) {
+        if (!strcmp(TIME_SLOTS[i], token)) return i;
+    }
+    return -1;
+}
+
+// \brief Returns the index of token string in CLASS_ROOMS array
+int get_Index_for_CLASS_ROOMS(char *token) {
+    for (int i = 0; i < 8; i++) {
+        if (!strcmp(CLASS_ROOMS[i], token)) return i;
+    }
+    return -1;
+}
+
+// \brief Function to schedule a new or extra leture
+void Schedule_new_lecture(char *faculty_name, char *class_name, char *subject) {
+    int index;
+    char weekday[20], classroom[20], time_slot_to_schedule[20];
+    printf("Enter the day on which you want to schedule a lecture : ");
+    scanf("%s", weekday);
+    printf("Students of %s are free in the following time slots : ", class_name);
+    display_free_slots_for_class(weekday, class_name);
+    printf("\n \n");
+    
+    // To change the free_classroom_slot_index array
+    return_free_slots_for_class(weekday, class_name);
+    
+    printf("In which time slot do you want to schedule the lecture? : ");
+    scanf("%s", time_slot_to_schedule);
+
+    index = get_Index_for_TIME_SLOTS(time_slot_to_schedule);
+    while(free_time_slot_index[index] != -1) {
+        printf("This class students are not free in the provided time slot :( \n");
+        printf("Please choose a different time slot ! \n");
+        printf("Time slot : ");
+        scanf("%s", time_slot_to_schedule);
+        index = get_Index_for_TIME_SLOTS(time_slot_to_schedule);
+        printf("\n");
+    }
+
+    printf("The following classrooms are free in the provided time slot : \n");
+    display_free_classrooms_at_given_time(weekday, time_slot_to_schedule);
+
+    return_free_classrooms_at_given_time(weekday, time_slot_to_schedule);
+
+    printf("\n \n");
+    printf("In which classroom do you want to schedule the lecture? : ");
+    scanf("%s", classroom);
+
+    index = get_Index_for_CLASS_ROOMS(classroom);
+    while(free_time_for_classroom[index] != -1) {
+        printf("The classroom is not available at the provided time :( \n");
+        printf("Please choose a different classroom ! \n");
+        printf("Classroom : ");
+        scanf("%s", classroom);
+        index = get_Index_for_CLASS_ROOMS(classroom);
+        printf("\n");
+    }
+
+    Class new_class;
+    strcpy(new_class.class_name, class_name);
+    strcpy(new_class.classroom, classroom);
+    strcpy(new_class.faculty, faculty_name);
+    strcpy(new_class.subject, subject);
+    strcpy(new_class.day, weekday);
+    strcpy(new_class.time, time_slot_to_schedule);
+    insertClass(new_class);
+}
