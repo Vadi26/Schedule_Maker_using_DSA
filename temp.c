@@ -1,26 +1,25 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#define MAX_LENGTH 100
+#include <time.h>
 
 int main() {
-    FILE *file = fopen("database.csv", "r");
-    if (file == NULL) {
-        printf("Failed to open the file.\n");
-        return 1;
+    while (1) {
+        // Get the current time
+        time_t currentTime = time(NULL);
+
+        // Convert the current time to a string representation
+        char* dateTimeString = ctime(&currentTime);
+
+        // Clear the console (for Unix/Linux/macOS)
+        // printf("\033[H\033[J");
+
+        // Print the current time
+        printf("Current Time: %s", dateTimeString);
+
+        // Wait for 1 second before updating the time
+        // Adjust the sleep duration as desired for a smoother display
+        // (Note: this sleep function is platform-dependent)
+        sleep(1);
     }
 
-    char line[MAX_LENGTH];
-    char *token;
-    
-    while (fgets(line, sizeof(line), file)) {
-        token = strtok(line, ",");
-        if (token != NULL) {
-            printf("First column value: %s\n", token);
-        }
-    }
-
-    fclose(file);
     return 0;
 }
